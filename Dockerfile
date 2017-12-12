@@ -1,6 +1,6 @@
 FROM php:{php_version}-apache
 
-MAINTAINER Ingo Kasch <ingo.kasch@psbrands.de>
+MAINTAINER Ingo Kasch <ingo.kasch@loom-dxp.com>
 
 RUN usermod -u 500 www-data && groupmod -g 500 www-data
 
