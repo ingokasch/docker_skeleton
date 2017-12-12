@@ -1,13 +1,17 @@
 #!/bin/sh
 
+bold=$(tput bold)
+normal=$(tput sgr0)
+underline=$(tput smul)
+
 printf "\n###############################\n"
 printf "# Initializing docker project #\n"
 printf "###############################\n\n"
 
 # Project name
-printf "Please enter your project name: "
+printf "${underline}Please enter your project name:${normal} "
 read input_projectname
-printf -- "--> Project name set to: ${input_projectname}\n\n"
+printf -- "--> Project name set to: ${bold}${input_projectname}${normal}\n\n"
 
 sed -i '' "s/{projectName}/${input_projectname}/g" ./docker-compose.yml
 sed -i '' "s/{projectName}/${input_projectname}/g" ./docker/environment/mysql
@@ -17,34 +21,34 @@ sed -i '' "s/{projectName}/${input_projectname}/g" ./tools/mysql/mysql_import_du
 sed -i '' "s/{projectName}/${input_projectname}/g" ./tools/mysql/mysql_export_dump.sh
 
 # vHost
-printf "Please enter your project's vhost name: "
+printf "${underline}Please enter your project's vhost name:${normal} "
 read input_vhostname
-printf -- "--> vHost set to: ${input_vhostname}\n\n"
+printf -- "--> vHost set to: ${bold}${input_vhostname}${normal}\n\n"
 
 sed -i '' "s/{vhost_name}/${input_vhostname}/g" ./docker/environment/env-settings
 
 # php version
-printf "Please enter your php version (e.g. 7.1): "
+printf "${underline}Please enter your php version (e.g. 7.1):${normal} "
 read input_php_version
-printf -- "--> PHP version set to: ${input_php_version}\n\n"
+printf -- "--> PHP version set to: ${bold}${input_php_version}${normal}\n\n"
 
 sed -i '' "s/{php_version}/${input_php_version}/g" ./Dockerfile
 
 # MySQL version
-printf "Please enter your mysql version (e.g. 5.7): "
+printf "${underline}Please enter your mysql version (e.g. 5.7):${normal} "
 read input_mysql_version
-printf -- "--> MySQL version set to: ${input_mysql_version}\n\n"
+printf -- "--> MySQL version set to: ${bold}${input_mysql_version}${normal}\n\n"
 
 sed -i '' "s/{mysql_version}/${input_mysql_version}/g" ./docker-compose.yml
 
 # Init TYPO3 project
 while true; do
-    read -p 'Init as TYPO3 project? ' answer
+    read -p '${underline}Init as TYPO3 project?${normal} ' answer
     case $answer in
         [Yy]* )
 
         # TYPO3 version
-        printf "Please enter your TYPO3 version (e.g. 8.7): "
+        printf "${underline}Please enter your TYPO3 version (e.g. 8.7):${normal} "
         read input_typo3_version
         sed -i '' "s/{typo3_version}/${input_typo3_version}/g" ./tools/typo3/typo3_init.sh
 
