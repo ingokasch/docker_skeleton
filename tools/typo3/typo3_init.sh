@@ -26,7 +26,7 @@ while true; do
 
         break;;
         [Nn]* ) echo '--> Skipping this step\r'; break;;
-        * ) echo "\n### Please answer yes or no.";;
+        * ) echo "\n### Please answer [y]es or [n]o.";;
     esac
 done
 
@@ -64,7 +64,7 @@ while true; do
 
         break;;
         [Nn]* ) echo '--> Skipping this step\r'; break;;
-        * ) echo "\n### Please answer yes or no.";;
+        * ) echo "\n### Please answer [y]es or [n]o.";;
     esac
 done
 
@@ -79,10 +79,10 @@ while true; do
 
         break;;
         [Nn]* ) echo '--> Skipping this step\r'; break;;
-        * ) echo "\n### Please answer yes or no.";;
+        * ) echo "\n### Please answer [y]es or [n]o.";;
     esac
 done
 
-echo "\n######################\r"
-echo "# All done \o/ ENJOY #\r"
-echo "######################\n"
+echo "\n########################\r"
+echo "# TYPO3 is initialized #\r"
+echo "########################\n"
