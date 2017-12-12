@@ -1,0 +1,67 @@
+version: "2"
+
+services:
+
+  nginx-proxy-{projectName}:
+    image: jwilder/nginx-proxy
+    container_name: nginx-proxy-{projectName}
+    ports:
+      - "80:80"
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+#      - ./docker/nginx-proxy/copyToContainer/nginx.conf:/etc/nginx/nginx.conf
+#      - ./docker/nginx-proxy/copyToContainer/proxy.conf:/etc/nginx/proxy.conf
+
+  # apache/php
+  web-{projectName}:
+    build: .
+    container_name: web-{projectName}
+    depends_on:
+      - nginx-proxy-{projectName}
+      - mysql-{projectName}
+    expose:
+      - 80
+    ports:
+     - "8080:80"
+    volumes:
+     - .:/var/www/html/
+    env_file:
+      - ./docker/environment/env-settings
+
+  # MySQL
+  mysql-{projectName}:
+    image: mysql:5.7
+    container_name: mysql-{projectName}
+    volumes:
+      - ./docker/mysql/mysql_data:/var/lib/mysql
+      - ./docker/mysql/copyToContainer:/etc/mysql/conf.d
+      - ./docker/mysql/dump:/tmp/mysql/dump/
+      - ./docker/mysql/script:/tmp/mysql/script/
+    restart: always
+    env_file:
+      - ./docker/environment/mysql
+    ports:
+      - "3306:3306"
+
+  # Mail
+  mail-{projectName}:
+    container_name: mail-{projectName}
+    image: mailhog/mailhog
+    ports:
+      - "9055:8025"
+    restart: always
+
+  # phpMyAdmin
+  phpmyadmin-{projectName}:
+    container_name: phpmyadmin-{projectName}
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8091:80"
+    restart: always
+    depends_on:
+      - mysql-{projectName}
+    environment:
+      PMA_HOST: mysql-{projectName}
+      PMA_USER: root
+      PMA_PASSWORD: root

@@ -1,0 +1,21 @@
+#
+# Web
+#
+VIRTUAL_HOST={vhost_name}
+
+#
+# If you have a mapped volume, you may want to map your
+# user id and group to the one used in the container in
+# order to avoid permission problems
+#
+# terminal id -u (mac os)
+LOCAL_USER=501
+# terminal id -g (mac os)
+LOCAL_GROUP=20
+
+#
+# You really want to use redis - makes your development much faster!
+# If this is enabled your config will be adjusted automatically
+# when running `install` or `init-project`
+#
+REDIS_ENABLED=yes
