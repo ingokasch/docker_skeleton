@@ -31,7 +31,7 @@ services:
 
   # MySQL
   mysql-{projectName}:
-    image: mysql:5.7
+    image: mysql:{mysql_version}
     container_name: mysql-{projectName}
     volumes:
       - ./docker/mysql/mysql_data:/var/lib/mysql

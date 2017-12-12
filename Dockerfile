@@ -1,4 +1,4 @@
-FROM php:7.1-apache
+FROM php:{php_version}-apache
 
 MAINTAINER Ingo Kasch <ingo.kasch@psbrands.de>
 

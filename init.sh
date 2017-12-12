@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# MySQL version
+echo "Please enter your mysql version (e.g. 5.7): "
+read input_mysql_version
+sed -i '' "s/{mysql_version}/${input_mysql_version}/g" ./docker-compose.yml
+
+# php version
+echo "Please enter your php version (e.g. 7.1): "
+read input_php_version
+sed -i '' "s/{php_version}/${input_php_version}/g" ./Dockerfile
+
 echo "Please enter your project name: "
 read input_projectname
 
@@ -15,6 +25,16 @@ sed -i '' "s/{projectName}/${input_projectname}/g" ./tools/mysql/mysql_export_du
 echo "Please enter your project's vhost name: "
 read input_vhostname
 sed -i '' "s/{vhost_name}/${input_vhostname}/g" ./docker/environment/env-settings
+
+# MySQL version
+echo "Please enter your mysql version (e.g. 5.7): "
+read input_mysql_version
+sed -i '' "s/{mysql_version}/${input_mysql_version}/g" ./docker-compose.yml
+
+# php version
+echo "Please enter your php version (e.g. 7.1): "
+read input_php_version
+sed -i '' "s/{php_version}/${input_php_version}/g" ./Dockerfile
 
 # Init TYPO3 project
 while true; do
