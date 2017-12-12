@@ -10,7 +10,7 @@ while true; do
         [Yy]* ) echo '--> Creating files and folders\r';
 
         echo '--> Download TYPO3 SRC';
-        wget -O - https://get.typo3.org/8.7 | tar -xzf -
+        wget -O - https://get.typo3.org/{typo3_version} | tar -xzf -
 
         echo '--> Linking typo3_src';
         rm -rf typo3_src
