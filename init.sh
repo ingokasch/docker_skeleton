@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# Output styling
 bold=$(tput bold)
 normal=$(tput sgr0)
 underline=$(tput smul)
@@ -43,7 +44,7 @@ sed -i '' "s/{mysql_version}/${input_mysql_version}/g" ./docker-compose.yml
 
 # Init TYPO3 project
 while true; do
-    read -p '${underline}Init as TYPO3 project?${normal} ' answer
+    read -p 'Init as TYPO3 project? ' answer
     case $answer in
         [Yy]* )
 
@@ -55,7 +56,7 @@ while true; do
         ./tools/typo3/typo3_init.sh
 
         break;;
-        [Nn]* ) printf '--> Skipping this step'; break;;
+        [Nn]* ) printf -- '--> Skipping this step'; break;;
         * ) printf "### Please answer [y]es or [n]o.";;
     esac
 done
@@ -63,6 +64,6 @@ done
 # Disable the init file
 mv ./init.sh ./init.sh.done
 
-printf "\n\n######################\n"
+printf "\n######################\n"
 printf "# All done \o/ ENJOY #\n"
 printf "######################\n"
