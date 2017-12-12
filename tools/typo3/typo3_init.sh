@@ -75,7 +75,7 @@ while true; do
     case $answer in
         [Yy]* ) echo '--> Importing dump\r';
 
-        ./mysql_import_dump.sh
+        ../mysql/mysql_import_dump.sh
 
         break;;
         [Nn]* ) echo '--> Skipping this step\r'; break;;
