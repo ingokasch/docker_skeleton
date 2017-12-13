@@ -17,10 +17,12 @@ The docker_skeleton offers the following services atm:
 * **phpMyAdmin**
 * **mailhog**
 
+---
 # Getting started
 
 ### 1. Download
 Clone or download this repository.
+
 
 ### 2. Check you ports
 As a locally installed application, a docker container will bind itself to a specific port.
@@ -32,6 +34,10 @@ Please make sure that the following TCP ports are free:
 * **3306** (Database communication - used by the MySQL database container)
 * **8091** (phpMyAdmin frontend - used by the phpMyAdmin container)
 * **9055** (mailhog frontend - used by the mailhog container)
+
+**Notice:  
+All ports can be modified in the "docker-compose.yml" file.**
+
 
 ### 3. Run the init script
 The init script will run through a series of questions. The docker_skeleton will build your environment depending on your answers.
@@ -50,6 +56,7 @@ The project name will be used to name your containers. As multiple docker contai
 Please enter your project name: example-website
 ```
 
+
 #### 4.2 Virtual host (vHost)
 The domain name under which you will be able to access the webserver e. g. "dev.example.com".
 
@@ -57,23 +64,27 @@ The domain name under which you will be able to access the webserver e. g. "dev.
 Please enter your project's vhost name: dev.example.com
 ```
 
-**!!! Please sure to add the virtual host to your host file !!!**
+**Attention:  
+Please sure to add the virtual host to your host file.**
 
 The line should look like this:
 ```
 127.0.0.1 dev.example.com
 ```
 
+
 #### 4.3 php version
 You are able to choose any php version that is available as an [official vendor docker apache image](https://hub.docker.com/_/php/) (see images with "-apache" postfix e. g. "7.1-apache, 7.2-apache").
 
-**!!! As the docker_skeleton only supports apache images you only need to enter the needed php version !!!**
+**Attention:  
+As the docker_skeleton only supports apache images you only need to enter the needed php version.**
 
 If you want the php verison "**7.1**" you just need to enter: 
 
 ```
 Please enter your php version (e.g. 7.1): 7.1
 ```
+
 
 #### 4.4 MySQL version
 You are able to choose any MySQL version that is available as an [official vendor docker apache image](https://hub.docker.com/_/mysql/).
@@ -84,6 +95,7 @@ If you want the MySQL verison "**5.7**" you just need to enter:
 Please enter your mysql version (e.g. 5.7): 5.7
 ```
 
+
 ### 5. TYPO3 project
 The docker_skeleton supports the implementation of TYPO3. If you want to include TYPO3 answere the question with "**yes or y**", otherwise answere with "**no or n**" and the step will be skipped.
 
@@ -91,14 +103,24 @@ The docker_skeleton supports the implementation of TYPO3. If you want to include
 Init as TYPO3 project? yes/no
 ```
 
+
 #### 5.1 TYPO3 version
 You are able to choose any TYPO3 version that is available https://get.typo3.org/.
 
-If you want the TYPO3 verison "**8.7**" you just need to enter: 
+If you want the latest TYPO3 **8.7**-branch version you just need to enter: 
 
 ```
 Please enter your TYPO3 version (e.g. 8.7): 8.7
 ```
+
+You can also use strict versions from any branch:
+
+```
+Please enter your TYPO3 version (e.g. 8.7): 8.7.9
+```
+
+**Notice:  
+Please read the section "2.2 Update the TYPO3 core" in the "Tools" section**.
 
 #### 5.2 Download and create symlinks
 If you want to download and symlink the chosen TYPO3 version, answere the question with "**yes or y**", otherwise answere with "**no or n**" and the step will be skipped.
@@ -111,6 +133,7 @@ The following symlinks would be created:
 * typo3_src
 * typo3
 * index.php
+
 
 #### 5.3 Create initial installation files/folders
 If you want to create the initial installation files and folders, answere the question with "**yes or y**", otherwise answere with "**no or n**" and the step will be skipped.
@@ -126,7 +149,9 @@ The following files/folders would be created:
 * FIRST_INSTALL [f]
 * .htaccess [f] - will be copied from the TYPO3 source folder
 
-**!!! If any of the files and folders mentioned above exists prior to running the script, they will NOT be overwritten !!!**
+**Attention:  
+If any of the files and folders mentioned above exists prior to running the script, they will NOT be overwritten.**
+
 
 #### 5.4 Import database dump
 If you want to import a database dump, answere the question with "**yes or y**", otherwise answere with "**no or n**" and the step will be skipped.
@@ -165,9 +190,116 @@ You can rebuild your containers at any time using the default docker-compose com
 docker-compose build
 ```
 
-### 7. Final thoughts
+---
+
+# Tools
+The docker_skeleton ships with some handy tools supporting you in everyday development tasks.
+
+
+## 1. MySQL
+### 1.1 Import MySQL database dump
+To import a MySQL database dump run the following command in your CLI:
+
+```
+./tools/mysql_import_dump.sh
+```
+
+The dump file (.sql) must be placed here: "**docker/mysql/dump/${projectName}_01.sql**"
+
+### 1.2 Export MySQL database dump
+To export your database run the following command in your CLI:
+
+```
+./tools/mysql_export_dump.sh
+```
+
+The exported .sql file will be stored here: "**docker/mysql/dump/${projectName}_01.sql**"
+
+**Attention:  
+An existing .sql file will be overwritten.**
+
+
+## 2. TYPO3
+### 2.1 Initialize a TYPO3 project
+To initialize a TYPO3 project (see "5. TYPO3 project" in the getting started section) run the following command in your CLI:
+
+```
+./tools/typo3/typo3_init.sh
+```
+
+### 2.2 Update the TYPO3 core
+To update the TYPO3 run the following initialization command in your CLI:
+
+```
+./tools/typo3/typo3_init.sh
+```
+This will promt you with the questions of the initialization script (see 5.2, 5.3 and 5.4 in the "**Getting started**" section).
+
+To update the core files you only need to download and symlink TYPO3 sources (see 5.2 in the "**Getting started**" section).
+
+```
+1. Download and symlink TYPO3 SRC? yes
+```
+
+The other questions (see 5.3 and 5.4 in the "**Gettings started**" section) should be answered with "**no**".
+
+**Notice:  
+Updating the TYPO3 core files this way only works if you have not specified a strict TYPO3 version e. g. "8.7.9". Instead use the latest 8.7-branch version using "8.7" while initializing your project (see 5.1 in the "Getting started" section).**
+
+### 2.3 Clear TYPO3 cache
+Clearing the cache is a frequently used task while developing TYPO3 projects, esp. if you are developing extensions. To clear the system cache run the following command in your CLI:
+
+```
+./tools/typo3/typo3_clear_temp.sh
+```
+The task will clear your "typo3temp" directory and specific database cache tables.
+
+
+### 2.4 Fix file permission
+Sometimes the permission of the "LocalConfiguration.php" and "PackageStates.php" files are set incorrectly, resulting in not being able to install/uninstall extensions or access the install tool. Run the following command in your CLI to fix the file permissions:
+
+```
+./tools/typo3/typo3_fix_permissions.sh
+```
+
+---
+# File/Folder structure
+This section will describe the file and folder structure of the docker_skeleton.
+
+| File&#160;[f]&#160;/&#160;Folder&#160;[d]&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; | Description | Additional information |
+|:--- |:---| :---|
+| docker [d]| General storage folder for docker configuration/script files ||
+|&#160;|&#160;|&#160;|
+| . apache [d]| apache configuration folder||
+| . . copyToContainer [d]| Files/Folders in this folder will be copied to the apache webserver container||
+| . . . php [d]| php configuration files||
+| . . . . ssmtp.ini [f]|smtp configuration file|
+| . . . . zzz_additional.ini [f]|php configuration file|
+| . . . ssmtp [d]| ssmtp configuration files||
+| . . . . ssmtp.conf [f]|ssmtp configuration file|
+|&#160;|&#160;|&#160;|
+| . environment [d]| environment configuration folder||
+| . . env-settings [f]| environment configuration file||
+| . . mysql [f]| mysql environment configuration file||
+|&#160;|&#160;|&#160;|
+| . mysql [d]| mysql configuration folder||
+| . . copyToContainer [d]| Files/Folders in this folder will be copied to the MySQL container||
+| . . . my.cnf [f]| MySQL configuration file||
+| . . dump [d]| MySQL dump files (.sql) will be exported/imported to and from this folder||
+| . . mysql_data [d]| This folder contains all MySQL database information|**MySQL database files. Do NOT modify!**|
+| . . script [d]| MySQL scripts used by the tools|see "**Tools**" section|
+|&#160;|&#160;|&#160;|
+| . nginx-proxy [d]| nginx configuration folder||
+|. . copyToContainer [d]| Files/Folders in this folder will be copied to the nginx container||
+|. . . nginx.conf [f]| nginx configuration file|Currently **DISABLED** in the docker-compose.yml file|
+|. . . proxy.conf [f]| nginx proxy configuration file|Currently **DISABLED** in the docker-compose.yml file|
+
+---
+# Final thoughts
 The docker_skeleton might only be a kick starter for your project. Feel free to modify the created "Dockerfile" and "docker-compose.yml" files at any time.
 
 If will refine the the process in the future and add more configuration options.
 
 Feed free to leave my comments and suggestions.
+
+For any docker specific questions please visit the [official docker documentation](https://docs.docker.com/).
