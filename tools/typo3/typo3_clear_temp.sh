@@ -1,4 +1,4 @@
 #!/bin/sh
 
-echo "### Cleaning the typo3temp folder"
-sudo rm -rf /htdocs/spiegelau/spiegelauwebsiterelaunch/typo3temp/*
+echo "-->d Cleaning the typo3temp folder"
+docker-compose exec web-{projectName} /bin/bash -c 'rm -rf /var/www/html/typo3temp/*'

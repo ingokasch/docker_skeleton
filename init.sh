@@ -20,6 +20,7 @@ sed -i '' "s/{projectName}/${input_projectname}/g" ./docker/mysql/script/import_
 sed -i '' "s/{projectName}/${input_projectname}/g" ./docker/mysql/script/export_dump.sh
 sed -i '' "s/{projectName}/${input_projectname}/g" ./tools/mysql/mysql_import_dump.sh
 sed -i '' "s/{projectName}/${input_projectname}/g" ./tools/mysql/mysql_export_dump.sh
+sed -i '' "s/{projectName}/${input_projectname}/g" ./tools/typo3/typo3_clear_temp.sh
 
 # vHost
 printf "${underline}Please enter your project's vhost name:${normal} "
