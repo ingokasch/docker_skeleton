@@ -17,6 +17,8 @@ The docker_skeleton offers the following services atm:
 * **phpMyAdmin**
 * **mailhog**
 
+Please see "7. Service frontends" in the "Getting started" section.
+
 ---
 # Getting started
 
@@ -189,6 +191,16 @@ You can rebuild your containers at any time using the default docker-compose com
 ```
 docker-compose build
 ```
+
+### 7. Service frontends
+
+Some container e. g. phpMyAdmin offer a frontend. The frontends can be accessed by via the defined ports:
+
+* **Apache2 / PHP**: Use the URL entered in "4.2 Virtual host (vHost)"
+* **phpMyAdmin**: 127.0.0.1:8091 or localhost:8091 or your vHost URL (see 4.2) followed by the port 8091
+* **mailhog**: 127.0.0.1:9055 or localhost:9055 or your vHost URL (see 4.2) followed by the port 9055
+* **MySQL**: No Frontend available
+* **nginx-proxy** No Frontend available
 
 ---
 
