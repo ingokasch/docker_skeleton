@@ -17,7 +17,7 @@ The docker_skeleton offers the following services atm:
 * **phpMyAdmin**
 * **mailhog**
 
-Please see "7. Service frontends" in the "Getting started" section.
+Please see "[7. Service frontends](#7-service-frontends)" in the "[Getting started section](#getting-started)".
 
 ---
 # Getting started
@@ -196,9 +196,9 @@ docker-compose build
 
 Some container e. g. phpMyAdmin offer a frontend. The frontends can be accessed by via the defined ports:
 
-* **Apache2 / PHP**: Use the URL entered in "4.2 Virtual host (vHost)"
-* **phpMyAdmin**: 127.0.0.1:8091 or localhost:8091 or your vHost URL (see 4.2) followed by the port 8091
-* **mailhog**: 127.0.0.1:9055 or localhost:9055 or your vHost URL (see 4.2) followed by the port 9055
+* **Apache2 / PHP**: Use the URL entered in "[4.2 Virtual host (vHost)](#42-virtual-host-vhost)"
+* **phpMyAdmin**: 127.0.0.1:8091 or localhost:8091 or your vHost URL (see [4.2 Virtual host (vHost)](#42-virtual-host-vhost)) followed by the port 8091
+* **mailhog**: 127.0.0.1:9055 or localhost:9055 or your vHost URL (see [4.2 Virtual host (vHost)](#42-virtual-host-vhost)) followed by the port 9055
 * **MySQL**: No Frontend available
 * **nginx-proxy** No Frontend available
 
@@ -233,7 +233,7 @@ An existing .sql file will be overwritten.**
 
 ## 2. TYPO3
 ### 2.1 Initialize a TYPO3 project
-To initialize a TYPO3 project (see "5. TYPO3 project" in the getting started section) run the following command in your CLI:
+To initialize a TYPO3 project (see "[5. TYPO3 project](#5-typo3-project)" in the "[Getting started section](#getting-started)") run the following command in your CLI:
 
 ```
 ./tools/typo3/typo3_init.sh
@@ -245,18 +245,18 @@ To update the TYPO3 run the following initialization command in your CLI:
 ```
 ./tools/typo3/typo3_init.sh
 ```
-This will promt you with the questions of the initialization script (see 5.2, 5.3 and 5.4 in the "**Getting started**" section).
+This will promt you with the questions of the initialization script (see [5.2](#52-download-and-create-symlinks), [5.3](#53-create-initial-installation-filesfolders) and [5.4](#54-import-database-dump) in the "[Getting started section](#getting-started)").
 
-To update the core files you only need to download and symlink TYPO3 sources (see 5.2 in the "**Getting started**" section).
+To update the core files you only need to download and symlink TYPO3 sources (see [5.2](#52-download-and-create-symlinks) in the "[Getting started section](#getting-started)").
 
 ```
 1. Download and symlink TYPO3 SRC? yes
 ```
 
-The other questions (see 5.3 and 5.4 in the "**Gettings started**" section) should be answered with "**no**".
+The other questions (see [5.3](#53-create-initial-installation-filesfolders) and [5.4](#54-import-database-dump) in the "**Gettings started**" section) should be answered with "**no**".
 
 **Notice:  
-Updating the TYPO3 core files this way only works if you have not specified a strict TYPO3 version e. g. "8.7.9". Instead use the latest 8.7-branch version using "8.7" while initializing your project (see 5.1 in the "Getting started" section).**
+Updating the TYPO3 core files this way only works if you have not specified a strict TYPO3 version e. g. "8.7.9". Instead use the latest 8.7-branch version using "8.7" while initializing your project (see [5.1](#51-typo3-version) in the "[Getting started section](#getting-started)").**
 
 ### 2.3 Clear TYPO3 cache
 Clearing the cache is a frequently used task while developing TYPO3 projects, esp. if you are developing extensions. To clear the system cache run the following command in your CLI:
@@ -299,7 +299,7 @@ This section will describe the file and folder structure of the docker_skeleton.
 | . . . my.cnf [f]| MySQL configuration file||
 | . . dump [d]| MySQL dump files (.sql) will be exported/imported to and from this folder||
 | . . mysql_data [d]| This folder contains all MySQL database information|**MySQL database files. Do NOT modify!**|
-| . . script [d]| MySQL scripts used by the tools|see "**Tools**" section|
+| . . script [d]| MySQL scripts used by the tools|see "[Tools section](#tools)"|
 |&#160;|&#160;|&#160;|
 | . nginx-proxy [d]| nginx configuration folder||
 |. . copyToContainer [d]| Files/Folders in this folder will be copied to the nginx container||
