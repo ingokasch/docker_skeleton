@@ -48,3 +48,9 @@ RUN mv composer.phar /usr/local/bin/composer
 #RUN sed -i 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-enabled/000-default.conf
 RUN sed -i 's!mailhub=mail!mailhub=mail:1025!g' /etc/ssmtp/ssmtp.conf
 RUN sed -i 's!#FromLineOverride=YES!FromLineOverride=YES!g' /etc/ssmtp/ssmtp.conf
+
+# Redirect the log files (needed due to nginx proxy)
+RUN rm -f /var/log/apache2/error.log
+RUN rm -f /var/log/apache2/access.log
+RUN touch /var/log/apache2/error.log
+RUN touch /var/log/apache2/access.log
