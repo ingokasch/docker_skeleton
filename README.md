@@ -122,7 +122,7 @@ Please enter your TYPO3 version (e.g. 8.7): 8.7.9
 ```
 
 **Notice:  
-Please read the section "2.2 Update the TYPO3 core" in the "Tools" section**.
+Please read the section "3.2 Update the TYPO3 core" in the "Tools" section**.
 
 #### 5.2 Download and create symlinks
 If you want to download and symlink the chosen TYPO3 version, answere the question with "**yes or y**", otherwise answere with "**no or n**" and the step will be skipped.
@@ -230,16 +230,30 @@ The exported .sql file will be stored here: "**docker/mysql/dump/${projectName}_
 **Attention:  
 An existing .sql file will be overwritten.**
 
+## 2. Apache
+### 2.1 error.log
+To read the apache's error.log output from your webserver container run the following command in your CLI:
 
-## 2. TYPO3
-### 2.1 Initialize a TYPO3 project
+```
+./tools/apache/error_log.sh
+```
+
+### 2.2 access.log
+To read the apache's access.log output from your webserver container run the following command in your CLI:
+
+```
+./tools/apache/access_log.sh
+```
+
+## 3. TYPO3
+### 3.1 Initialize a TYPO3 project
 To initialize a TYPO3 project (see "[5. TYPO3 project](#5-typo3-project)" in the "[Getting started section](#getting-started)") run the following command in your CLI:
 
 ```
 ./tools/typo3/typo3_init.sh
 ```
 
-### 2.2 Update the TYPO3 core
+### 3.2 Update the TYPO3 core
 To update the TYPO3 run the following initialization command in your CLI:
 
 ```
@@ -258,7 +272,7 @@ The other questions (see [5.3](#53-create-initial-installation-filesfolders) and
 **Notice:  
 Updating the TYPO3 core files this way only works if you have not specified a strict TYPO3 version e. g. "8.7.9". Instead use the latest 8.7-branch version using "8.7" while initializing your project (see [5.1](#51-typo3-version) in the "[Getting started section](#getting-started)").**
 
-### 2.3 Clear TYPO3 cache
+### 3.3 Clear TYPO3 cache
 Clearing the cache is a frequently used task while developing TYPO3 projects, esp. if you are developing extensions. To clear the system cache run the following command in your CLI:
 
 ```
@@ -266,8 +280,7 @@ Clearing the cache is a frequently used task while developing TYPO3 projects, es
 ```
 The task will clear your "typo3temp" directory and specific database cache tables.
 
-
-### 2.4 Fix file permission
+### 4.4 Fix file permission
 Sometimes the permission of the "LocalConfiguration.php" and "PackageStates.php" files are set incorrectly, resulting in not being able to install/uninstall extensions or access the install tool. Run the following command in your CLI to fix the file permissions:
 
 ```
