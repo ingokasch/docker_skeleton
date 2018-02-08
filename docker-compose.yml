@@ -38,6 +38,7 @@ services:
       - ./docker/mysql/copyToContainer:/etc/mysql/conf.d
       - ./docker/mysql/dump:/tmp/mysql/dump/
       - ./docker/mysql/script:/tmp/mysql/script/
+      - ./docker/mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
     restart: always
     env_file:
       - ./docker/environment/mysql
