@@ -310,6 +310,8 @@ This section will describe the file and folder structure of the docker_skeleton.
 | . mysql [d]| mysql configuration folder||
 | . . copyToContainer [d]| Files/Folders in this folder will be copied to the MySQL container||
 | . . . my.cnf [f]| MySQL configuration file||
+| . . docker-entrypoint-initdb.d [d] | *.sql files in this folder will be executed on the initial creation of the database||
+| . . . mysql_init.sql [f] | Init MySQL script||
 | . . dump [d]| MySQL dump files (.sql) will be exported/imported to and from this folder||
 | . . mysql_data [d]| This folder contains all MySQL database information|**MySQL database files. Do NOT modify!**|
 | . . script [d]| MySQL scripts used by the tools|see "[Tools section](#tools)"|
