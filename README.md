@@ -81,12 +81,14 @@ You are able to choose any php version that is available as an [official vendor 
 **Attention:  
 As the docker_skeleton only supports apache images you only need to enter the needed php version.**
 
-If you want the php verison "**7.1**" you just need to enter: 
+If you want the php version "**7.1**" you just need to enter: 
 
 ```
 Please enter your php version (e.g. 7.1): 7.1
 ```
 
+**Attention:  
+If you are using php 7.2 please check the [additional information for php 7.2](# Additional information for php 7.2).**
 
 #### 4.4 MySQL version
 You are able to choose any MySQL version that is available as an [official vendor docker apache image](https://hub.docker.com/_/mysql/).
@@ -328,3 +330,50 @@ If will refine the the process in the future and add more configuration options.
 Feed free to leave my comments and suggestions.
 
 For any docker specific questions please visit the [official docker documentation](https://docs.docker.com/).
+
+# Additional information for php 7.2
+If you are using **php 7.2** you need to adjust the Dockerfile before building your container. This is due to the fact that **mcrypt** has been deprecated in php 7.2 (see [official php documentation](http://php.net/manual/de/migration71.deprecated.php)) and some linux libraries have been renamed.
+
+To give you a little kick start you might want to replace the following lines in the Dockerfile:
+
+**Replace:**  
+
+```
+RUN apt-get install -y libpng12-dev libmcrypt-dev libmcrypt4 libcurl3-dev libfreetype6 libjpeg62-turbo libjpeg62-turbo-dev libpng12-dev libfreetype6-dev libicu-dev libxslt1-dev imagemagick gettext vim git wget colordiff curl rsync ssh mysql-client zip ssmtp cron
+```
+with
+
+```  
+RUN apt-get install -y libpng-dev libcurl3-dev libfreetype6 libjpeg62-turbo libjpeg62-turbo-dev libfreetype6-dev libicu-dev libxslt1-dev imagemagick gettext vim git wget colordiff curl rsync ssh mysql-client zip ssmtp cron
+```
+--
+**Replace:**  
+
+```
+RUN apt-get purge --auto-remove -y libpng12-dev libmcrypt-dev libcurl3-dev libpng12-dev libfreetype6-dev libjpeg62-turbo-dev
+```
+with
+
+```  
+RUN apt-get purge --auto-remove -y libpng-dev libcurl3-dev libfreetype6-dev libjpeg62-turbo-dev
+```
+--
+**Replace:**  
+
+```
+RUN pecl install xdebug-2.5.0
+```
+with
+
+```  
+RUN pecl install xdebug-2.6.0
+```
+--
+
+**Remove:**  
+
+```
+RUN docker-php-ext-install mcrypt
+```
+
+--
