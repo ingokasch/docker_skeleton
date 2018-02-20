@@ -16,6 +16,7 @@ printf -- "--> Project name set to: ${bold}${input_projectname}${normal}\n\n"
 
 sed -i '' "s/{projectName}/${input_projectname}/g" ./docker-compose.yml
 sed -i '' "s/{projectName}/${input_projectname}/g" ./docker/environment/mysql
+sed -i '' "s/{projectName}/${input_projectname}/g" ./docker/apache/copyToContainer/ssmtp/ssmtp.conf
 sed -i '' "s/{projectName}/${input_projectname}/g" ./docker/mysql/script/import_dump.sh
 sed -i '' "s/{projectName}/${input_projectname}/g" ./docker/mysql/script/export_dump.sh
 sed -i '' "s/{projectName}/${input_projectname}/g" ./tools/mysql/mysql_import_dump.sh
