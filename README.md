@@ -88,7 +88,7 @@ Please enter your php version (e.g. 7.1): 7.1
 ```
 
 **Attention:  
-If you are using php 7.2 please check the [additional information for php 7.2](# Additional information for php 7.2).**
+If you are using php 7.2 please check the [additional information for php 7.2](#additional-information-for-php-7.2).**
 
 #### 4.4 MySQL version
 You are able to choose any MySQL version that is available as an [official vendor docker apache image](https://hub.docker.com/_/mysql/).
