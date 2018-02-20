@@ -347,6 +347,7 @@ with
 RUN apt-get install -y libpng-dev libcurl3-dev libfreetype6 libjpeg62-turbo libjpeg62-turbo-dev libfreetype6-dev libicu-dev libxslt1-dev imagemagick gettext vim git wget colordiff curl rsync ssh mysql-client zip ssmtp cron
 ```
 --
+
 **Replace:**  
 
 ```
@@ -358,6 +359,7 @@ with
 RUN apt-get purge --auto-remove -y libpng-dev libcurl3-dev libfreetype6-dev libjpeg62-turbo-dev
 ```
 --
+
 **Replace:**  
 
 ```
