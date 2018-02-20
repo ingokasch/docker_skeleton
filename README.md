@@ -300,8 +300,6 @@ This section will describe the file and folder structure of the docker_skeleton.
 | . . . php [d]| php configuration files||
 | . . . . ssmtp.ini [f]|smtp configuration file|
 | . . . . zzz_additional.ini [f]|php configuration file|
-| . . . ssmtp [d]| ssmtp configuration files||
-| . . . . ssmtp.conf [f]|ssmtp configuration file|
 |&#160;|&#160;|&#160;|
 | . environment [d]| environment configuration folder||
 | . . env-settings [f]| environment configuration file||
