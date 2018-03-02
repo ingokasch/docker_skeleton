@@ -10,7 +10,7 @@ services:
     restart: always
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
-#      - ./docker/nginx-proxy/copyToContainer/nginx.conf:/etc/nginx/nginx.conf
+      - ./docker/nginx-proxy/copyToContainer/nginx.conf:/etc/nginx/nginx.conf
 #      - ./docker/nginx-proxy/copyToContainer/proxy.conf:/etc/nginx/proxy.conf
 
   # apache/php
