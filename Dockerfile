@@ -16,7 +16,7 @@ RUN apt-get update
 # Fix outdated PCRE bug in Debian 8
 RUN apt-get install -y -t stretch libpcre3 libpcre3-dev
 
-RUN apt-get install -y libpng12-dev libmcrypt-dev libmcrypt4 libcurl3-dev libfreetype6 libjpeg62-turbo libjpeg62-turbo-dev libpng12-dev libfreetype6-dev libicu-dev libxslt1-dev imagemagick gettext vim git wget colordiff curl rsync ssh mysql-client zip ssmtp cron
+RUN apt-get install -y libpng-dev libmcrypt-dev libmcrypt4 libcurl3-dev libfreetype6 libjpeg62-turbo libjpeg62-turbo-dev libfreetype6-dev libicu-dev libxslt1-dev imagemagick gettext vim git wget colordiff curl rsync ssh mysql-client zip ssmtp cron
 RUN rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-install mysqli
@@ -33,7 +33,7 @@ RUN docker-php-ext-install soap
 RUN docker-php-ext-install opcache
 
 RUN pecl install xdebug-2.5.0
-RUN apt-get purge --auto-remove -y libpng12-dev libmcrypt-dev libcurl3-dev libpng12-dev libfreetype6-dev libjpeg62-turbo-dev
+RUN apt-get purge --auto-remove -y libpng-dev libmcrypt-dev libcurl3-dev libfreetype6-dev libjpeg62-turbo-dev
 
 RUN chmod +x /usr/local/bin/*
 
