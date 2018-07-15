@@ -100,7 +100,7 @@ Please enter your mysql version (e.g. 5.7): 5.7
 ```
 
 
-### 5. TYPO3 project
+### 5. Project type
 The docker_skeleton supports the implementation of TYPO3 and generic PHP projects. If you want to include TYPO3 choose option "**1) TYPO3**". For a generic PHP project choose option "**2) Generic PHP project**".
 
 ```
