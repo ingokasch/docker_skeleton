@@ -47,22 +47,29 @@ printf -- "--> MySQL version set to: ${bold}${input_mysql_version}${normal}\n\n"
 
 sed -i '' "s/{mysql_version}/${input_mysql_version}/g" ./docker-compose.yml
 
-# Init TYPO3 project
-while true; do
-    read -p 'Init as TYPO3 project? ' answer
-    case $answer in
-        [Yy]* )
+printf "${underline}Project type:${normal}\n"
+PS3='Choose your project type: '
+options=("TYPO3" "Generic PHP project")
+select opt in "${options[@]}"
+do
+    case $opt in
+        "TYPO3")
 
-        # TYPO3 version
-        printf "${underline}Please enter your TYPO3 version (e.g. 8.7):${normal} "
-        read input_typo3_version
-        sed -i '' "s/{typo3_version}/${input_typo3_version}/g" ./tools/typo3/typo3_init.sh
+            # TYPO3 version
+            printf "${underline}Please enter your TYPO3 version (e.g. 8.7):${normal} "
+            read input_typo3_version
+            sed -i '' "s/{typo3_version}/${input_typo3_version}/g" ./tools/typo3/typo3_init.sh
 
-        ./tools/typo3/typo3_init.sh
-
-        break;;
-        [Nn]* ) printf -- '--> Skipping this step'; break;;
-        * ) printf "### Please answer [y]es or [n]o.";;
+            ./tools/typo3/typo3_init.sh
+            break;
+            ;;
+        "Generic PHP project")
+            echo "\n########################\r"
+            echo "# Nothing to do here #\r"
+            echo "########################\n"
+            break;
+            ;;
+        *) echo "${underline}Invalid option '$REPLY' selected${normal}\n";;
     esac
 done
 

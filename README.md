@@ -101,10 +101,13 @@ Please enter your mysql version (e.g. 5.7): 5.7
 
 
 ### 5. TYPO3 project
-The docker_skeleton supports the implementation of TYPO3. If you want to include TYPO3 answere the question with "**yes or y**", otherwise answere with "**no or n**" and the step will be skipped.
+The docker_skeleton supports the implementation of TYPO3 and generic PHP projects. If you want to include TYPO3 choose option "**1) TYPO3**". For a generic PHP project choose option "**2) Generic PHP project**".
 
 ```
-Init as TYPO3 project? yes/no
+Project type:
+1) TYPO3
+2) Generic PHP project
+Choose your project type:
 ```
 
 
@@ -120,7 +123,7 @@ Please enter your TYPO3 version (e.g. 8.7): 8.7
 You can also use strict versions from any branch:
 
 ```
-Please enter your TYPO3 version (e.g. 8.7): 8.7.9
+Please enter your TYPO3 version (e.g. 8.7): 8.7.17
 ```
 
 **Notice:  
