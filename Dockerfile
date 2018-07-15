@@ -11,7 +11,14 @@ RUN rm -rf /var/www/html/*
 RUN echo "deb http://deb.debian.org/debian stretch main" > /etc/apt/sources.list.d/stretch.list && \
     echo "Package: *\\nPin: release n=jessie\\nPin-Priority: 900\\n\\nPackage: libpcre3*\\nPin: release n=stretch\\nPin-Priority: 1000" > /etc/apt/preferences
 
-RUN apt-get update
+RUN touch /etc/apt/apt.conf.d/99fixbadproxy
+RUN echo "Acquire::http::Pipeline-Depth 0;" >> /etc/apt/apt.conf.d/99fixbadproxy
+RUN echo "Acquire::http::No-Cache true;" >> /etc/apt/apt.conf.d/99fixbadproxy
+RUN echo "Acquire::BrokenProxy true;" >> /etc/apt/apt.conf.d/99fixbadproxy
+RUN apt-get update -o Acquire::CompressionTypes::Order::=gz
+RUN apt-get clean
+RUN rm -rf /var/lib/apt/lists/*
+RUN apt-get update -y
 
 # Fix outdated PCRE bug in Debian 8
 RUN apt-get install -y -t stretch libpcre3 libpcre3-dev
