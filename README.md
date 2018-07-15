@@ -252,7 +252,7 @@ To read the apache's access.log output from your webserver container run the fol
 
 ## 3. TYPO3
 ### 3.1 Initialize a TYPO3 project
-To initialize a TYPO3 project (see "[5. TYPO3 project](#5-typo3-project)" in the "[Getting started section](#getting-started)") run the following command in your CLI:
+To initialize a TYPO3 project (see "[5. Project type](#5-project-type)" in the "[Getting started section](#getting-started)") run the following command in your CLI:
 
 ```
 ./tools/typo3/typo3_init.sh
