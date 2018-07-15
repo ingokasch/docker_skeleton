@@ -215,7 +215,7 @@ The docker_skeleton ships with some handy tools supporting you in everyday devel
 To import a MySQL database dump run the following command in your CLI:
 
 ```
-./tools/import_dump.sh
+./tools/mysql/import_dump.sh
 ```
 
 The dump file (.sql) must be placed here: "**docker/mysql/dump/${projectName}_01.sql**"
@@ -224,7 +224,7 @@ The dump file (.sql) must be placed here: "**docker/mysql/dump/${projectName}_01
 To export your database run the following command in your CLI:
 
 ```
-./tools/export_dump.sh
+./tools/mysql/export_dump.sh
 ```
 
 The exported .sql file will be stored here: "**docker/mysql/dump/${projectName}_01.sql**"
