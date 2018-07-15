@@ -215,7 +215,7 @@ The docker_skeleton ships with some handy tools supporting you in everyday devel
 To import a MySQL database dump run the following command in your CLI:
 
 ```
-./tools/mysql_import_dump.sh
+./tools/import_dump.sh
 ```
 
 The dump file (.sql) must be placed here: "**docker/mysql/dump/${projectName}_01.sql**"
@@ -224,7 +224,7 @@ The dump file (.sql) must be placed here: "**docker/mysql/dump/${projectName}_01
 To export your database run the following command in your CLI:
 
 ```
-./tools/mysql_export_dump.sh
+./tools/export_dump.sh
 ```
 
 The exported .sql file will be stored here: "**docker/mysql/dump/${projectName}_01.sql**"
@@ -278,7 +278,7 @@ Updating the TYPO3 core files this way only works if you have not specified a st
 Clearing the cache is a frequently used task while developing TYPO3 projects, esp. if you are developing extensions. To clear the system cache run the following command in your CLI:
 
 ```
-./tools/typo3/typo3_clear_temp.sh
+./tools/typo3/clear_temp.sh
 ```
 The task will clear your "typo3temp" directory and specific database cache tables.
 
@@ -286,7 +286,7 @@ The task will clear your "typo3temp" directory and specific database cache table
 Sometimes the permission of the "LocalConfiguration.php" and "PackageStates.php" files are set incorrectly, resulting in not being able to install/uninstall extensions or access the install tool. Run the following command in your CLI to fix the file permissions:
 
 ```
-./tools/typo3/typo3_fix_permissions.sh
+./tools/typo3/fix_permissions.sh
 ```
 
 ---

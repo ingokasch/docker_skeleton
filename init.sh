@@ -19,10 +19,10 @@ sed -i '' "s/{projectName}/${input_projectname}/g" ./Dockerfile
 sed -i '' "s/{projectName}/${input_projectname}/g" ./docker/environment/mysql
 sed -i '' "s/{projectName}/${input_projectname}/g" ./docker/mysql/script/import_dump.sh
 sed -i '' "s/{projectName}/${input_projectname}/g" ./docker/mysql/script/export_dump.sh
-sed -i '' "s/{projectName}/${input_projectname}/g" ./tools/mysql/mysql_import_dump.sh
-sed -i '' "s/{projectName}/${input_projectname}/g" ./tools/mysql/mysql_export_dump.sh
-sed -i '' "s/{projectName}/${input_projectname}/g" ./tools/typo3/typo3_clear_temp.sh
-sed -i '' "s/{projectName}/${input_projectname}/g" ./tools/typo3/typo3_fix_permissions.sh
+sed -i '' "s/{projectName}/${input_projectname}/g" ./tools/mysql/import_dump.sh
+sed -i '' "s/{projectName}/${input_projectname}/g" ./tools/mysql/export_dump.sh
+sed -i '' "s/{projectName}/${input_projectname}/g" ./tools/typo3/clear_temp.sh
+sed -i '' "s/{projectName}/${input_projectname}/g" ./tools/typo3/fix_permissions.sh
 sed -i '' "s/{projectName}/${input_projectname}/g" ./tools/apache/access_log.sh
 sed -i '' "s/{projectName}/${input_projectname}/g" ./tools/apache/error_log.sh
 
