@@ -21,9 +21,9 @@ RUN rm -rf /var/lib/apt/lists/*
 RUN apt-get update -y
 
 # Fix outdated PCRE bug in Debian 8
-RUN apt-get install -y -t stretch libpcre3 libpcre3-dev
+RUN apt-get install -y --allow-unauthenticated -t stretch libpcre3 libpcre3-dev
 
-RUN apt-get install -y libpng-dev libmcrypt-dev libmcrypt4 libcurl3-dev libfreetype6 libjpeg62-turbo libjpeg62-turbo-dev libfreetype6-dev libicu-dev libxslt1-dev imagemagick gettext vim git wget colordiff curl rsync ssh mysql-client zip ssmtp cron
+RUN apt-get install -y --allow-unauthenticated libpng-dev libmcrypt-dev libmcrypt4 libcurl3-dev libfreetype6 libjpeg62-turbo libjpeg62-turbo-dev libfreetype6-dev libicu-dev libxslt1-dev imagemagick gettext vim git wget colordiff curl rsync ssh mysql-client zip ssmtp cron
 RUN rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-install mysqli
